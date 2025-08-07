@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* //base styles */
+@layer base {
+  :root {
+    --sidebar-text-color: rgb(228, 242, 240);
+    --secondary-color: rgb(68, 147, 66);
+  }
+  .theme-dark {
+    --text-color: rgb(228, 242, 240);
+    --main-color: rgb(40, 42, 58);
+    --link-active-color: rgb(29, 31, 41);
+    --background-color: rgba(0, 0, 0, 1);
+    --border-color: rgb(118, 119, 121);
+    --outline-color: rgb(58, 160, 97);
+    --grey-color: rgb(82, 83, 85);
+    --link-icon-color: rgb(154, 160, 166);
+    --link-hover-color: rgb(56, 58, 78);
+    --placeholder-text-color: rgb(229 231 235);
+    --modal-bg-color: rgb(17 24 39);
+    --nav-icon-hover: rgb(82, 83, 85);
+    --content-bg-color: rgb(38 38 38);
+  }
+  /* rgb(115, 95, 50) */
+  .theme-light {
+    --text-color: rgb(32, 33, 36);
+    --main-color: rgb(2, 55, 60);
+    --link-active-color: rgb(1, 34, 37);
+    --background-color: rgb(228, 242, 240);
+    --border-color: rgb(218, 220, 224);
+    --outline-color: rgb(174, 221, 191);
+    --grey-color: rgb(241, 243, 244);
+    --link-icon-color: rgb(34, 34, 34);
+    --link-hover-color: rgb(3, 47, 51);
+    --placeholder-text-color: rgb(75 85 99);
+    --modal-bg-color: rgb(241, 243, 244);
+    --nav-icon-hover: rgb(228, 242, 240);
+    --content-bg-color: rgb(255, 255, 255);
+  }
+  body {
+    background-color: var(--background-color);
+  }
+
+  h1 {
+    @apply text-2xl;
+  }
+  h2 {
+    @apply text-xl;
+  }
+  .placeholderStyles::placeholder {
+    @apply text-placeholder font-semibold;
+  }
+  .bookmarkPlaceholderStyles::placeholder {
+    @apply text-gray-400 font-semibold;
+  }
+  .link-hover:hover {
+    @apply bg-link_hover;
+  }
+  .link-active {
+    @apply bg-link_active;
+  }
+  .nav-icon {
+    @apply hover:bg-nav_hover rounded-full flex justify-center items-center md:w-10 md:h-10 w-5 h-5 mr-2;
+  }
+
+  .link-styles {
+    @apply flex items-center py-3 px-3;
+  }
+  .link-text {
+    @apply font-semibold ml-6;
+  }
+  .custom-shadow {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  }
+  .banner {
+    background-image: linear-gradient(rgba(2, 55, 60, 0.7), rgba(68, 147, 66, 0.6)), url("./assets/images/image.jpg");
+    background-position: 0%;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+@layer components {
+  .sidebar-icon {
+    @apply md:w-6 md:h-6 w-4 h-4 text-sidebar_text;
+  }
+  .navbar-icon {
+    @apply md:w-6 md:h-6 w-4 h-4 text-primary;
+  }
+}
+
+@layer utilities {
+  /* Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+.image-gallery-slide .image-gallery-image {
+  height: 500px;
+}
