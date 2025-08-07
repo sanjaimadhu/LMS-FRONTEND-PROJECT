@@ -22,9 +22,6 @@ This is a web application designed for managing libraries using the MERN (MongoD
 **Server:** Node, Express, Mongoose, Socket io, JWT
 
 
-## Authors
-
-- [@Israt Jahan](https://github.com/israt-emu) [@Tusar Imran](https://www.github.com/Tushar8640)
 
 
 ## Demo
@@ -33,8 +30,7 @@ Live: https://amathlib.netlify.app/
 
 Front-end code: https://github.com/sanjaimadhu/LMS-FRONTEND-PROJECT
 
-Backend code: https://github.com/israt-emu/Library-management-backend
-
+Backend code: https://github.com/sanjaimadhu/LMS-BACKEND-PROJECT
 
 
 ## Screenshots
@@ -54,8 +50,4 @@ Backend code: https://github.com/israt-emu/Library-management-backend
 ![App Screenshot](https://i.ibb.co/kxMzM6j/Web-capture-12-2-2023-104756-localhost.jpg)
 
 ![App Screenshot](https://i.ibb.co/ZgZQvSL/Web-capture-12-2-2023-10136-localhost.jpg)
-
-## Feedback
-
-If you have any feedback, please reach out to us at tusar.imran.dev@gmail.com
 
