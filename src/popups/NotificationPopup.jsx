@@ -9,6 +9,8 @@ import { getUser } from "../store/slices/authSlice";
 import axios from "axios";
 import { toast } from "react-toastify";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const NotificationPopup = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
@@ -31,7 +33,7 @@ const NotificationPopup = () => {
 
       // 1. Backend-la irundhu Order ID vaanguroam
       const { data } = await axios.post(
-        "http://localhost:4000/api/v1/payment/checkout", 
+        `${API_URL}/payment/checkout`, 
        { amount: Number(amount) }, 
         { withCredentials: true }
       );
@@ -47,7 +49,7 @@ const NotificationPopup = () => {
           try {
             // 2. Payment verification backend call
             const verifyRes = await axios.post(
-              "http://localhost:4000/api/v1/payment/payment-verification", 
+              `${API_URL}/payment/payment-verification`, 
               { ...response, noteId }, 
               { withCredentials: true }
             );
@@ -77,7 +79,7 @@ const NotificationPopup = () => {
   const markAsRead = async (id) => {
     try {
       const response = await axios.put(
-        `http://localhost:4000/api/v1/notification/mark-read/${id}`, 
+        `${API_URL}/notification/mark-read/${id}`, 
         {}, 
         { withCredentials: true }
       );
