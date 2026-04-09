@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 
 // Destructuring props, including userEmail for backend notification logic
+const API_URL = import.meta.env.VITE_API_URL;
 const AddFinePopup = ({ borrowId, userName, userEmail, bookTitle, onClose }) => {
   const [fineAmount, setFineAmount] = useState("");
   const [loading, setLoading] = useState(false);
@@ -19,7 +20,7 @@ const AddFinePopup = ({ borrowId, userName, userEmail, bookTitle, onClose }) => 
     try {
       // Sending all required fields to the backend for fine processing and user alerts
       const { data } = await axios.put(
-        `http://localhost:4000/api/v1/borrow/update-fine/${borrowId}`,
+        `${API_URL}/borrow/update-fine/${borrowId}`,
         { 
           fine: Number(fineAmount), // Convert to Number to ensure mathematical consistency
           name: userName, 
