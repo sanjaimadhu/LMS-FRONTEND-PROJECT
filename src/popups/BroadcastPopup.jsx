@@ -4,6 +4,7 @@ import { toggleBroadcastPopup } from "../store/slices/popUpSlice";
 import { Send, X, Megaphone } from "lucide-react"; 
 import axios from "axios";
 
+const API_URL = import.meta.env.VITE_API_URL;
 const BroadcastPopup = () => {
   const { broadcastPopup } = useSelector((state) => state.popup);
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const BroadcastPopup = () => {
     try {
       // Backend API call - withCredentials included for session/cookie support
       const { data } = await axios.post(
-        "http://localhost:4000/api/v1/notification/broadcast", 
+        `${API_URL}/notification/broadcast`, 
         { message }, 
         { withCredentials: true } 
       );
