@@ -72,7 +72,7 @@ const FineManagement = () => {
     setLoadingClear(borrowId);
     try {
       const response = await axios.put(
-        `http://localhost:4000/api/v1/borrow/update-fine/${borrowId}`,
+        `${API_URL}/borrow/update-fine/${borrowId}`,
         { fine: 0 }, 
         { withCredentials: true }
       );
@@ -95,13 +95,13 @@ const FineManagement = () => {
     setLoadingEmail(borrowId);
     try {
       await axios.put(
-        `http://localhost:4000/api/v1/borrow/update-fine/${borrowId}`,
+        `${API_URL}/borrow/update-fine/${borrowId}`,
         { fine: Number(fineAmount) },
         { withCredentials: true }
       );
 
       const response = await axios.post(
-        "http://localhost:4000/api/v1/notification/send-fine",
+        `${API_URL}/notification/send-fine`,
         { 
           email, 
           userName: name, 
