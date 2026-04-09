@@ -3,6 +3,8 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { User, Book, Hash, Bell, Clock, ShieldCheck, Trash2 } from "lucide-react";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const AdminReservations = () => {
   const [reservations, setReservations] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -10,7 +12,7 @@ const AdminReservations = () => {
   const fetchAllReservations = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:4000/api/v1/book/admin/reservations", 
+        `${API_URL}/book/admin/reservations`, 
         { withCredentials: true }
       );
       setReservations(data.reservations);
@@ -24,7 +26,7 @@ const AdminReservations = () => {
   const deleteReservation = async (id) => {
     if (window.confirm("Are you sure you want to clear this reservation record?")) {
       try {
-        await axios.delete(`http://localhost:4000/api/v1/book/admin/reservation/${id}`, {
+        await axios.delete(`${API_URL}/book/admin/reservation/${id}`, {
           withCredentials: true,
         });
         toast.success("Reservation cleared");
