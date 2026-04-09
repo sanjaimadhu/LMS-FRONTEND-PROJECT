@@ -7,6 +7,8 @@ import { fetchUserBorrowedBooks } from "../store/slices/borrowSlice";
 import { getUser } from "../store/slices/authSlice"; 
 import { FiBell, FiAlertCircle, FiX, FiClock, FiCheckCircle } from "react-icons/fi";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const PaymentPage = () => {
   const dispatch = useDispatch();
   const [loadingClear, setLoadingClear] = useState(null); 
@@ -23,7 +25,7 @@ const PaymentPage = () => {
     setLoadingClear(notificationId);
     try {
       const response = await axios.put(
-        `http://localhost:4000/api/v1/notification/mark-read/${notificationId}`,
+        `${API_URL}/notification/mark-read/${notificationId}`,
         {},
         { withCredentials: true }
       );
