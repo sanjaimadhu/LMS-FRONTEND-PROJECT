@@ -3,6 +3,7 @@ import axios from "axios";
 import { FiSearch, FiTrash2, FiMessageSquare, FiStar, FiBarChart2, FiX, FiMail, FiCalendar, FiUser, FiPhone } from "react-icons/fi";
 import { toast } from "react-toastify";
 
+const API_URL = import.meta.env.VITE_API_URL;
 const ReviewManagement = () => {
   const [bookId, setBookId] = useState("");
   const [reviews, setReviews] = useState([]);
@@ -16,7 +17,7 @@ const ReviewManagement = () => {
   useEffect(() => {
     const fetchAllBooks = async () => {
       try {
-        const { data } = await axios.get("http://localhost:4000/api/v1/book/all", { withCredentials: true });
+        const { data } = await axios.get(`${API_URL}/book/all`, { withCredentials: true });
         setAllBooks(data.books || data);
       } catch (error) {
         toast.error("Failed to fetch books list!");
@@ -29,7 +30,7 @@ const ReviewManagement = () => {
     if (!selectedId) return;
     setLoading(true);
     try {
-      const { data } = await axios.get(`http://localhost:4000/api/v1/book/reviews?id=${selectedId}`, { withCredentials: true });
+      const { data } = await axios.get(`${API_URL}/book/reviews?id=${selectedId}`, { withCredentials: true });
       setReviews(data.reviews || []);
     } catch (error) {
       toast.error("Error loading reviews!");
@@ -47,7 +48,7 @@ const ReviewManagement = () => {
   const deleteReviewHandler = async (reviewId) => {
     if (!window.confirm("Are you sure?")) return;
     try {
-      await axios.delete(`http://localhost:4000/api/v1/book/reviews/delete?bookId=${bookId}&reviewId=${reviewId}`, { withCredentials: true });
+      await axios.delete(`${API_URL}/book/reviews/delete?bookId=${bookId}&reviewId=${reviewId}`, { withCredentials: true });
       toast.success("Review deleted!");
       fetchReviews(bookId);
     } catch (error) {
