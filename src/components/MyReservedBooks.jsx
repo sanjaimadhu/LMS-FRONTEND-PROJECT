@@ -4,6 +4,8 @@ import { useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import { BookOpen, Hash, X, Info, CheckCircle, Clock, BookmarkX } from "lucide-react";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const MyReservedBooks = () => {
   const [reservedBooks, setReservedBooks] = useState([]);
   const [selectedBook, setSelectedBook] = useState(null);
@@ -13,7 +15,7 @@ const MyReservedBooks = () => {
 
   const fetchReserved = async () => {
     try {
-      const { data } = await axios.get("http://localhost:4000/api/v1/book/my-reserved-books", { withCredentials: true });
+      const { data } = await axios.get(`${API_URL}/book/my-reserved-books`, { withCredentials: true });
       setReservedBooks(data.reservedBooks);
 
       const autoOpenId = location.state?.openBookId;
@@ -37,7 +39,7 @@ const MyReservedBooks = () => {
   const handleCancel = async (id) => {
     if (!window.confirm("Are you sure you want to cancel this reservation?")) return;
     try {
-      await axios.put(`http://localhost:4000/api/v1/book/cancel-reservation/${id}`, {}, { withCredentials: true });
+      await axios.put(`${API_URL}/book/cancel-reservation/${id}`, {}, { withCredentials: true });
       toast.success("Reservation cancelled");
       fetchReserved();
     } catch (error) {
