@@ -19,6 +19,7 @@ import ReadBookPopup from "../popups/ReadBookPopup";
 import RecordBookPopup from "../popups/RecordBookPopup";
 import UpdateBookPopup from "../popups/UpdateBookPopup";
 
+const API_URL = import.meta.env.VITE_API_URL;
 const BookManagement = () => {
   const dispatch = useDispatch();
 
@@ -58,7 +59,7 @@ const BookManagement = () => {
   const handleReserveBook = async (id) => {
     try {
       const { data } = await axios.put(
-        `http://localhost:4000/api/v1/book/reserve/${id}`, 
+        `${API_URL}/book/reserve/${id}`, 
         {}, 
         { withCredentials: true }
       );
