@@ -3,6 +3,8 @@ import axios from "axios";
 import { toggleAddBookPopup } from "./popUpSlice"; 
 import { toast } from "react-toastify";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const bookSlice = createSlice({
     name: "book",
     initialState: {
@@ -45,7 +47,7 @@ const bookSlice = createSlice({
 export const fetchAllBooks = () => async (dispatch) => {
     dispatch(bookSlice.actions.fetchBooksRequest());
     try {
-        const res = await axios.get("http://localhost:4000/api/v1/book/all", { withCredentials: true });
+        const res = await axios.get(`${API_URL}/book/all`, { withCredentials: true });
         dispatch(bookSlice.actions.fetchBooksSuccess(res.data.books));
     } catch (err) {
         dispatch(bookSlice.actions.fetchBooksFailed(err.response?.data?.message || "Failed to fetch books"));
@@ -55,9 +57,8 @@ export const fetchAllBooks = () => async (dispatch) => {
 export const addBook = (data) => async (dispatch) => {
     dispatch(bookSlice.actions.addBookRequest());
     try {
-        const res = await axios.post("http://localhost:4000/api/v1/book/admin/add", data, {
+        const res = await axios.post(`${API_URL}/book/admin/add`, data, {
             withCredentials: true,
-            // Header is handled automatically by Axios based on data type (JSON or FormData)
         });
         dispatch(bookSlice.actions.addBookSuccess(res.data.message));
         toast.success(res.data.message);
@@ -72,9 +73,7 @@ export const addBook = (data) => async (dispatch) => {
 export const updateBook = (id, data) => async (dispatch) => {
     dispatch(bookSlice.actions.updateBookRequest());
     try {
-        // "Content-Type": "application/json" remove pannaachu. 
-        // Ippo image update pannaalum pannalaalum Axios sariyaa data-vai anuppum.
-        const res = await axios.put(`http://localhost:4000/api/v1/book/update/${id}`, data, {
+        const res = await axios.put(`${API_URL}/book/update/${id}`, data, {
             withCredentials: true,
         });
         dispatch(bookSlice.actions.updateBookSuccess(res.data.message));
@@ -90,7 +89,7 @@ export const deleteBook = (id) => async (dispatch) => {
     if (window.confirm("Are you sure you want to delete this book?")) {
         dispatch(bookSlice.actions.deleteBookRequest());
         try {
-            const res = await axios.delete(`http://localhost:4000/api/v1/book/delete/${id}`, {
+            const res = await axios.delete(`${API_URL}/book/delete/${id}`, {
                 withCredentials: true,
             });
             dispatch(bookSlice.actions.deleteBookSuccess(res.data.message));
@@ -107,7 +106,7 @@ export const deleteBook = (id) => async (dispatch) => {
 export const createBookReview = (id, reviewData) => async (dispatch) => {
     dispatch(bookSlice.actions.createReviewRequest());
     try {
-        const res = await axios.put(`http://localhost:4000/api/v1/book/review/${id}`, reviewData, {
+        const res = await axios.put(`${API_URL}/book/review/${id}`, reviewData, {
             withCredentials: true,
         });
         dispatch(bookSlice.actions.createReviewSuccess(res.data.message));
@@ -125,7 +124,7 @@ export const deleteBookReview = (bookId, reviewId) => async (dispatch) => {
         dispatch(bookSlice.actions.deleteReviewRequest());
         try {
             const res = await axios.delete(
-                `http://localhost:4000/api/v1/book/reviews/delete?bookId=${bookId}&reviewId=${reviewId}`,
+                `${API_URL}/book/reviews/delete?bookId=${bookId}&reviewId=${reviewId}`,
                 { withCredentials: true }
             );
             dispatch(bookSlice.actions.deleteReviewSuccess(res.data.message));
@@ -138,9 +137,3 @@ export const deleteBookReview = (bookId, reviewId) => async (dispatch) => {
         }
     }
 };
-
-export const resetBookSlice = () => (dispatch) => {
-    dispatch(bookSlice.actions.resetBookSlice());
-};
-
-export default bookSlice.reducer;
