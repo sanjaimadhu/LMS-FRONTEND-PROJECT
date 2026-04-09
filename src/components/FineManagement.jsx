@@ -10,6 +10,8 @@ import { FiSearch, FiX, FiCalendar, FiClock } from "react-icons/fi";
 import { LuHistory } from "react-icons/lu"; 
 import { fetchAllBorrowedBooks } from "../store/slices/borrowSlice";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const FineManagement = () => {
   const dispatch = useDispatch();
   const { allBorrowedBooks } = useSelector((state) => state.borrow);
