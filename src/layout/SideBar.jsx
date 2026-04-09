@@ -33,6 +33,8 @@ import SettingPopup from "../popups/SettingPopup";
 import UpdateProfilePopup from "../popups/UpdateProfilePopup";
 import NotificationPopup from "../popups/NotificationPopup";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 const SideBar = ({ isSideBarOpen, setIsSideBarOpen, setSelectedComponent }) => {
   const dispatch = useDispatch();
   
@@ -58,7 +60,7 @@ const SideBar = ({ isSideBarOpen, setIsSideBarOpen, setSelectedComponent }) => {
     const checkReservations = async () => {
       if (isAuthenticated && user?.role === "User") {
         try {
-          const { data } = await axios.get("http://localhost:4000/api/v1/book/my-reserved-books", {
+          const { data } = await axios.get(`${API_URL}/book/my-reserved-books`, {
             withCredentials: true,
           });
           const availableCount = data.reservedBooks?.filter(book => book.quantity > 0).length;
