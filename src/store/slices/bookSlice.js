@@ -4,7 +4,6 @@ import { toggleAddBookPopup } from "./popUpSlice";
 import { toast } from "react-toastify";
 
 const API_URL = import.meta.env.VITE_API_URL;
-
 const bookSlice = createSlice({
     name: "book",
     initialState: {
@@ -59,6 +58,7 @@ export const addBook = (data) => async (dispatch) => {
     try {
         const res = await axios.post(`${API_URL}/book/admin/add`, data, {
             withCredentials: true,
+            // Header is handled automatically by Axios based on data type (JSON or FormData)
         });
         dispatch(bookSlice.actions.addBookSuccess(res.data.message));
         toast.success(res.data.message);
@@ -73,6 +73,8 @@ export const addBook = (data) => async (dispatch) => {
 export const updateBook = (id, data) => async (dispatch) => {
     dispatch(bookSlice.actions.updateBookRequest());
     try {
+        // "Content-Type": "application/json" remove pannaachu. 
+        // Ippo image update pannaalum pannalaalum Axios sariyaa data-vai anuppum.
         const res = await axios.put(`${API_URL}/book/update/${id}`, data, {
             withCredentials: true,
         });
@@ -137,3 +139,9 @@ export const deleteBookReview = (bookId, reviewId) => async (dispatch) => {
         }
     }
 };
+
+export const resetBookSlice = () => (dispatch) => {
+    dispatch(bookSlice.actions.resetBookSlice());
+};
+
+export default bookSlice.reducer;
