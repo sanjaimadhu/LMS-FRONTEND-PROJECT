@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";  
 import { toggleRecordBookPopup } from "./popUpSlice";
 
+const API_URL = import.meta.env.VITE_API_URL;
 
 const borrowSlice = createSlice({
 
@@ -81,7 +82,7 @@ reducers: {
 
  export const fetchUserBorrowedBooks = () => async(dispatch) => {
     dispatch(borrowSlice.actions.fetchUserBorrowedBooksRequest());
- await axios.get("http://localhost:4000/api/v1/borrow/my-borrowed-books",
+ await axios.get(`${API_URL}/borrow/my-borrowed-books`,
      {withCredentials: true })
 .then((res) => { dispatch(
     borrowSlice.actions.fetchUserBorrowedBooksSucess(res.data.borrowedBooks));
@@ -94,7 +95,7 @@ reducers: {
 
 export const fetchAllBorrowedBooks = () => async(dispatch) => {
     dispatch(borrowSlice.actions.fetchAllBorrowedBooksRequest());
- await axios.get("http://localhost:4000/api/v1/borrow/borrowed-books-by-users", 
+ await axios.get(`${API_URL}/borrow/borrowed-books-by-users`, 
     {withCredentials: true })
 .then((res) => { dispatch(
     borrowSlice.actions.fetchAllBorrowedBooksSucess(res.data.borrowedBooks));
@@ -106,7 +107,7 @@ export const fetchAllBorrowedBooks = () => async(dispatch) => {
 
 export const recordBorrowBook = (email, id) => async(dispatch) => {
     dispatch(borrowSlice.actions.recordBookRequest());
- await axios.post(`http://localhost:4000/api/v1/borrow/record-borrow-book/${id}`, 
+ await axios.post(`${API_URL}/borrow/record-borrow-book/${id}`, 
     {email},{withCredentials: true,
         headers: {
             "Content-Type": "application/json",
@@ -126,7 +127,7 @@ export const recordBorrowBook = (email, id) => async(dispatch) => {
 
 export const returnBook = (email, id) => async(dispatch) => {
     dispatch(borrowSlice.actions.returnBookReuest());
- await axios.put(`http://localhost:4000/api/v1/borrow/return-borrowed-book/${id}`, 
+ await axios.put(`${API_URL}/borrow/return-borrowed-book/${id}`, 
     {email},{withCredentials: true,
         headers: {
             "Content-Type": "application/json",
