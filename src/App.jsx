@@ -25,18 +25,20 @@ const App = () => {
   
 
   useEffect(() => {
-    dispatch(getUser());
-    dispatch(fetchAllBooks());
-    
-     if (isAuthenticated && user?.role === "Admin") {
-      console.log("THE LOGGED IN USER IS AN ADMIN")
-      dispatch(fetchAllUsers());
-      dispatch(fetchAllBorrowedBooks());
-    } 
-    if (isAuthenticated && user?.role === "User") {
-      dispatch(fetchUserBorrowedBooks());
-    } 
-  }, [isAuthenticated]);
+  dispatch(getUser());
+  dispatch(fetchAllBooks());
+}, []);
+
+useEffect(() => {
+  if (isAuthenticated && user?.role === "Admin") {
+    dispatch(fetchAllUsers());
+    dispatch(fetchAllBorrowedBooks());
+  } 
+  if (isAuthenticated && user?.role === "User") {
+    dispatch(fetchUserBorrowedBooks());
+  }
+}, [isAuthenticated, user]);
+  
   return( 
   <Router>
     <Routes>
