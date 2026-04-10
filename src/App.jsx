@@ -16,7 +16,8 @@ import { fetchAllBooks } from "./store/slices/bookSlice";
 import { fetchAllBorrowedBooks, fetchUserBorrowedBooks } from "./store/slices/borrowSlice";
 
 
-
+axios.defaults.baseURL = "https://lms-backend-project-2fne.onrender.com";
+axios.defaults.withCredentials = true;
 
 const App = () => {
   const {user, isAuthenticated} = useSelector((state) => state.auth);
