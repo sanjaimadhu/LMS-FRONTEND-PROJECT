@@ -1,8 +1,9 @@
-<img width="1365" height="645" alt="USER NOTIFICATIONS" src="https://github.com/user-attachments/assets/8779c426-48d4-41bb-ae04-cd9c87299fd1" /><img width="1366" height="768" alt="UPDATE CREDENTIALS" src="https://github.com/user-attachments/assets/a734e3b1-d3aa-448b-abe3-8747e460a36e" /># 📚 Library Management System (MERN Stack)
+# 📚 Library Management System (MERN Stack)
 
 A full-featured Library Management System built using the MERN stack (MongoDB, Express.js, React.js, Node.js) with modern UI using TailwindCSS.
 
 ---
+
 
 ## 🚀 Features
 
@@ -114,6 +115,10 @@ A full-featured Library Management System built using the MERN stack (MongoDB, E
 
 ---
 
+📌 Future Improvements
+
+ * Mobile Responsiveness 📱
+
 ## 🛠️ Tech Stack
 
 * **Frontend:** React.js, TailwindCSS
@@ -130,8 +135,8 @@ A full-featured Library Management System built using the MERN stack (MongoDB, E
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/lms-project.git
-cd lms-project
+git clone https://github.com/sanjaimadhu
+
 ```
 
 ### 2. Install dependencies
