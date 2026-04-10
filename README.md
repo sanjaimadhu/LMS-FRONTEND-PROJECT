@@ -1,214 +1,117 @@
 # 📚 Library Management System (MERN Stack)
 
-A full-featured **Library Management System** built using the MERN stack (MongoDB, Express, React, Node.js). This system allows users to browse books, borrow/return them, leave reviews, and enables admins to manage the entire library efficiently.
+A full-featured Library Management System built using the MERN stack (MongoDB, Express.js, React.js, Node.js) with modern UI using TailwindCSS.
 
 ---
 
 ## 🚀 Features
 
-### 👤 User Features
+### 👤 User Panel
 
-* Register & Login (JWT Authentication)
-* Browse & Search Books
-* View Book Details
-* Borrow & Return Books
-* Reserve Books
-* Add Reviews & Ratings
-* View Profile & Borrow History
+* 🔍 Browse & search books
+* 📖 View book details
+* 📌 Reserve books
+* 📚 Borrow & return books
+* ⭐ Add reviews & ratings
+* 💳 Fine payment system
 
-### 🛠️ Admin Features
+### 🛠️ Admin Panel
 
-* Add / Update / Delete Books
-* Manage Users
-* Track Borrowed Books
-* Handle Overdue & Fines
-* Dashboard Analytics
+* 📊 Dashboard analytics
+* 👥 User management
+* 📚 Book inventory control
+* 📌 Reservation management
+* ⭐ Review moderation
+* 💰 Fine management
 
-### 🔔 Additional Features
+---
 
-* Email Notifications 📧
-* Payment Integration 💳 (for fines)
-* Role-based Access Control
+## 📸 Screenshots
+
+### ✔ Register Page
+
+<img width="1366" height="768" alt="REGISTER" src="https://github.com/user-attachments/assets/03ee4c0d-3b52-4ac7-be9c-2f964af31763" />
+
+
+### 👤 User Panel
+
+<p align="center">
+  <img src="./images/user-dashboard.png" width="45%"/>
+  <img src="./images/user-books.png" width="45%"/>
+</p>
+
+### 🛠️ Admin Panel
+
+
 
 ---
 
 ## 🛠️ Tech Stack
 
-### Frontend (`client/`)
-
-* React.js (Vite)
-* Tailwind CSS
-* Redux Toolkit
-
-### Backend (`server/`)
-
-* Node.js
-* Express.js
-* MongoDB (Mongoose)
+* **Frontend:** React.js, TailwindCSS
+* **Backend:** Node.js, Express.js
+* **Database:** MongoDB
+* **State Management:** Redux Toolkit
+* **Authentication:** JWT
+* **Other:** Email Service, Payment Integration
 
 ---
 
-## 📂 Project Structure
+## ⚙️ Installation
 
-```
-client/
-│── src/
-│   ├── assets/
-│   ├── components/
-│   ├── layout/
-│   ├── pages/
-│   ├── popups/
-│   ├── store/
-│   │   ├── slices/
-│   │   └── store.js
-│   ├── App.jsx
-│   ├── main.jsx
-
-server/
-│── config/
-│── controllers/
-│── database/
-│── middlewares/
-│── models/
-│── routes/
-│── services/
-│── utils/
-│── app.js
-│── server.js
-```
-
----
-
-## ⚙️ Installation & Setup
-
-### 1️⃣ Clone the repository
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/your-username/lms-project.git
 cd lms-project
 ```
 
-### 2️⃣ Install dependencies
-
-#### Backend
+### 2. Install dependencies
 
 ```bash
-cd server
+# Backend
+cd backend
+npm install
+
+# Frontend
+cd frontend
 npm install
 ```
 
-#### Frontend
+### 3. Setup environment variables
 
-```bash
-cd client
-npm install
-```
+Create `.env` file in backend:
 
----
-
-### 3️⃣ Run the project
-
-#### Start backend
-
-```bash
-cd server
-npm run dev
-```
-
-#### Start frontend
-
-```bash
-cd client
-npm run dev
-```
-
----
-
-## 🌐 Environment Variables
-
-Create a `.env` file inside `server/`:
-
-```
+```env
 PORT=4000
+MONGO_URI=your_mongodb_uri
+JWT_SECRET=your_secret
+SMTP_MAIL=your_email
+SMTP_PASSWORD=your_password
+```
 
-FRONTEND_URL=http://localhost:5173
+### 4. Run the project
 
-MONGO_URI=your_mongodb_connection_string
+```bash
+# Backend
+npm run dev
 
-SMTP_HOST=smtp.gmail.com
-SMTP_SERVICE=gmail
-SMTP_PORT=465
-SMTP_MAIL=your_email@gmail.com
-SMTP_PASSWORD=your_app_password
-
-JWT_SECRET_KEY=your_jwt_secret
-JWT_EXPIRE=3d
-COOKIE_EXPIRE=3
-
-CLOUDINARY_CLIENT_NAME=your_cloudinary_name
-CLOUDINARY_CLIENT_API=your_cloudinary_api_key
-CLOUDINARY_CLIENT_SECRET=your_cloudinary_secret
-
-RAZORPAY_API_KEY=your_razorpay_key
-RAZORPAY_API_SECRET=your_razorpay_secret
+# Frontend
+npm run dev
 ```
 
 ---
 
-## 📸 Screenshots
+## 🌐 Deployment
 
-> 📁 Create a folder named **screenshots** in your root directory
-
-```
-/screenshots
-```
-
----
-
-### 🔐 Login Page
-
-![Uploading Screenshot 2026-04-10 205630.png…]()
-
-
-### 📚 Book List Page
-
-![Books](./screenshots/books.png)
-
-### 📖 Book Details
-
-![Details](./screenshots/details.png)
-
-### 👤 User Dashboard
-
-![User](./screenshots/user.png)
-
-### 🛠️ Admin Dashboard
-
-![Admin](./screenshots/admin.png)
-
----
-
-## 🎥 Demo (Optional)
-
-Add a GIF demo:
-
-```
-![Demo](./screenshots/demo.gif)
-```
-
----
-
-## 📌 Future Improvements
-
-* Mobile Responsiveness 📱
-* Advanced Search Filters
-* AI Book Recommendations 🤖
+* Frontend: Netlify 
+* Backend: Render
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Feel free to fork this repo and submit a pull request.
+Feel free to fork this repo and contribute!
 
 ---
 
@@ -220,4 +123,6 @@ This project is licensed under the MIT License.
 
 ## 🙌 Author
 
-Developed by **Madhu**
+**Madhu**
+
+---
